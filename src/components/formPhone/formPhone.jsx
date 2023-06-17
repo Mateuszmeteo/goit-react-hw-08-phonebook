@@ -7,26 +7,37 @@ export class FormPhone extends Component {
     constructor(props) {
         super(props)
         this.state = {
-                contacts: [],
-                name: ''
+                contacts: [
+                  {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+                  {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+                  {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+                  {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+                ],
+                // contacts: [],
+                filter: '',
+                name: '',
+                number: ''
          }
     }
 
     handleSubmit = (e) => {
       e.preventDefault()
-      const {name, contacts} = this.state
+      const {name, contacts, number} = this.state
 
+      //==dodac warunek numb//
       if (name.trim() === '') {
         return alert('no text in input')
       }
 
       const newContact = {
         id: nanoid(),
-        name: name
+        name: name,
+        number: number
       }
       this.setState({
         contacts: [...contacts, newContact],
-        name: ''
+        name: '',
+        number: ''
       })
 
     }
@@ -38,7 +49,7 @@ export class FormPhone extends Component {
     }
 
     render() {
-      const {name, contacts} = this.state
+      const {name, contacts, number} = this.state
         return (
             <div>
                 <h3>Phonebook</h3>
@@ -55,12 +66,29 @@ export class FormPhone extends Component {
                         value={name}
                         onChange={this.handleChange}
                     />
+                    <label>Number</label>
+                    <input
+                        type="tel"
+                        name="number"
+                        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                        required
+                        value={number}
+                        onChange={this.handleChange}
+                    />
                     <button type='submit'>Add contact</button>
                 </form>
                 <h3>Contacts</h3>
+                <label>Find contacts by name</label>
+                <input 
+                  type='text'
+                  // value={filter}
+                />
                 <ul>
                   {contacts.map((contact) => (
-                    <li key={contact.id}>{contact.name}</li>
+                    <li key={contact.id}>
+                      {contact.name}: {contact.number}
+                    </li>
                   ))}
                 </ul>
             </div>
