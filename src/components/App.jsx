@@ -1,5 +1,3 @@
-
-
 import { Component } from "react";
 import { nanoid } from "nanoid";
 // import css from './formPhone.module.css';
@@ -24,6 +22,12 @@ export class App extends Component {
   addContact = (name, number) => {
     if (name.trim() === '') {
       return alert('no text in input');
+    }
+
+    const isDuplicateContact = this.state.contacts.some((contact) => 
+    contact.name.toLowerCase() === name.toLowerCase());
+    if (isDuplicateContact) {
+      return alert(`'${name}' is already in contacts.`);
     }
 
     const newContact = {
