@@ -48,8 +48,20 @@ export class FormPhone extends Component {
 
     }
 
+    handleFilter = e => {
+      this.setState({
+        filter: e.target.value
+      })
+    }
+
     render() {
-      const {name, contacts, number} = this.state
+      const {name, contacts, number, filter} = this.state
+
+      const filtredContacts = contacts.filter((contact) => 
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+      )
+
+
         return (
             <div>
                 <h3>Phonebook</h3>
@@ -82,10 +94,11 @@ export class FormPhone extends Component {
                 <label>Find contacts by name</label>
                 <input 
                   type='text'
-                  // value={filter}
+                  value={filter}
+                  onChange={this.handleFilter}
                 />
                 <ul>
-                  {contacts.map((contact) => (
+                  {filtredContacts.map((contact) => (
                     <li key={contact.id}>
                       {contact.name}: {contact.number}
                     </li>
