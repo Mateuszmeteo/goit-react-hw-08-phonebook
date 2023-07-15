@@ -1,15 +1,31 @@
-import { useState } from "react";
-import css from './contactForm.module.css'
+import { useDispatch } from 'react-redux';
+import { saveContact } from './../redux/Store'
 
-const ContactForm = ({ onAddContact }) => {
+import css from './contactForm.module.css'
+import { useState } from 'react';
+
+const ContactForm = () => {
+
+  const dispatch = useDispatch()
+
   const [name, setName] = useState('')
   const [number, setNumber] = useState('')
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddContact(name, number)
-    setName('')
-    setNumber('')
+
+    const newContact = {
+      id: nanoid(),
+      name: name,
+      number: number
+    };
+
+    dispatch(saveContact(newContact));
+
+    setName('');
+    setNumber('');
+
   };
 
   const handleChange = (e) => {
