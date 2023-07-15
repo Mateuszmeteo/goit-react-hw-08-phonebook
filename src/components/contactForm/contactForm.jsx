@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { saveContact } from './../redux/Store'
+import { nanoid } from 'nanoid';
 
 import css from './contactForm.module.css'
 import { useState } from 'react';
@@ -14,6 +15,9 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (name.trim() === '') {
+      return;
+    }
 
     const newContact = {
       id: nanoid(),

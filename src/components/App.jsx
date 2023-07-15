@@ -1,5 +1,5 @@
 import { useSelector, useDispatch} from 'react-redux'
-import { saveContact, deleteContact, setFilter } from './redux/Store';
+import { saveContact, deleteContact, setFilter, getFilteredContacts } from './redux/Store';
 
 import { nanoid } from "nanoid";
 import ContactForm  from "./contactForm/contactForm";
@@ -15,7 +15,7 @@ export const App = () => {
 
 
 
-  const addContact = (name, number) => {
+  const handleAddContact = (name, number) => {
     if (name.trim() === '') {
       return alert('no text in input');
     }
@@ -35,7 +35,7 @@ export const App = () => {
     dispatch(saveContact(newContact))
   };
 
-  const deleteContact = (contactId) => {
+  const handleDeleteContact = (contactId) => {
     dispatch(deleteContact(contactId))
   };
 
@@ -44,24 +44,34 @@ export const App = () => {
     dispatch(setFilter(filterValue))
   };
 
-  const getFilteredContacts = () => {
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()))
-  }
 
-  const filteredContacts = getFilteredContacts()
+  const filteredContacts = useSelector(getFilteredContacts);
+
+
+
 
   return (
     <div>
       <div>
         <h1>Phonebook</h1>
-        <ContactForm onAddContact={addContact} />
+        <ContactForm onAddContact={handleAddContact} />
       </div>
       <div>
         <h2>Contacts</h2>
         <Filter value={filter} onChange={handleChangeFilter} />
-        <ContactList contacts={filteredContacts} onDeleteContact={deleteContact} />
+        <ContactList contacts={filteredContacts} onDeleteContact={handleDeleteContact} />
       </div>
     </div>
   );
 };
+
+
+
+
+
+  // const getFilteredContacts = () => {
+  //   return contacts.filter((contact) =>
+  //     contact.name.toLowerCase().includes(filter.toLowerCase()))
+  // }
+
+  // const filteredContacts = getFilteredContacts()
