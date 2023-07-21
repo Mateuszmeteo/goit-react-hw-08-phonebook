@@ -1,14 +1,40 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+
+export const fetchContacts = createAsyncThunk('contacts/fetchContacts', async () => {
+    const response = await fetch('https://64b6729fdf0839c97e1594df.mockapi.io/contacts');
+    const data = await response.json();
+    console.log(data)
+    return data;
+  });
+  
+  export const saveContact = createAsyncThunk('contacts/saveContact', async (contact) => {
+    const response = await fetch('https://64b6729fdf0839c97e1594df.mockapi.io/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(contact),
+    });
+    const data = await response.json();
+    return data;
+  });
+  
+  export const deleteContact = createAsyncThunk('contacts/deleteContact', async (contactId) => {
+    await fetch(`https://64b6729fdf0839c97e1594df.mockapi.io/contacts/${contactId}`, {
+      method: 'DELETE',
+    });
+    return contactId;
+  });
+
+
 
 
 const initialState = {
-    contacts: [
-        { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-        { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-        { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-        { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-      ],
-    filter: ""
+    contacts: [],
+      filter: '',
+      status: 'idle',
+      error: null,
 }
 
 
@@ -16,24 +42,36 @@ const contactsSlise = createSlice({
     name: "contacts",
     initialState,
     reducers: {
-        saveContact: (state, action) => {
-            state.contacts.push(action.payload)
-        },
-        deleteContact: (state, action) => {
-            state.contacts = state.contacts.filter((contact) => contact.id !== action.payload)
-        },
         setFilter: (state, action) => {
             state.filter = action.payload
         }
-    }
-}
+    },
+    extraReducers: (builder) => {
+        builder
+          .addCase(fetchContacts.pending, (state) => {
+            state.status = 'loading';
+          })
+          .addCase(fetchContacts.fulfilled, (state, action) => {
+            state.status = 'succeeded';
+            state.contacts = action.payload;
+          })
+          .addCase(fetchContacts.rejected, (state, action) => {
+            state.status = 'failed';
+            state.error = action.error.message;
+          })
+          .addCase(saveContact.fulfilled, (state, action) => {
+            state.contacts.push(action.payload);
+          })
+          .addCase(deleteContact.fulfilled, (state, action) => {
+            state.contacts = state.contacts.filter((contact) => contact.id !== action.payload);
+          });
+      },
+})
 
-)
-
-export const { saveContact, deleteContact, setFilter } = contactsSlise.actions
+export const { setFilter } = contactsSlise.actions
 
 
-export const getFilteredContacts = (state) => {
+export const selectFilteredContacts = (state) => {
     const { contacts, filter } = state.contacts;
     return contacts.filter((contact) =>
       contact.name.toLowerCase().includes(filter.toLowerCase())

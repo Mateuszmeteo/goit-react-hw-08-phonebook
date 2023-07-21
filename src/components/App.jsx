@@ -1,10 +1,11 @@
 import { useSelector, useDispatch} from 'react-redux'
-import { saveContact, deleteContact, setFilter, getFilteredContacts } from './redux/Store';
+import { saveContact, deleteContact, setFilter, fetchContacts } from './redux/Store';
 
 import { nanoid } from "nanoid";
 import ContactForm  from "./contactForm/contactForm";
 import ContactList from "./contactList/contactList";
 import Filter from "./filter/filter";
+import { useEffect } from 'react';
 
 export const App = () => {
 
@@ -13,6 +14,9 @@ export const App = () => {
   const filter = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
 
   const handleAddContact = (name, number) => {
@@ -45,7 +49,7 @@ export const App = () => {
   };
 
 
-  const filteredContacts = useSelector(getFilteredContacts);
+  const filteredContacts = useSelector((state) => state.contacts.filteredContacts);
 
 
 
@@ -65,13 +69,3 @@ export const App = () => {
   );
 };
 
-
-
-
-
-  // const getFilteredContacts = () => {
-  //   return contacts.filter((contact) =>
-  //     contact.name.toLowerCase().includes(filter.toLowerCase()))
-  // }
-
-  // const filteredContacts = getFilteredContacts()

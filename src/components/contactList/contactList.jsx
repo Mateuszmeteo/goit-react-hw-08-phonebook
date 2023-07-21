@@ -2,10 +2,10 @@
 import React from "react";
 import css from "./contactList.module.css"
 import { useDispatch, useSelector } from "react-redux";
-import { deleteContact, getFilteredContacts } from "components/redux/Store";
+import { deleteContact, selectFilteredContacts } from "components/redux/Store";
 
 const ContactList = () => {
-  const filteredContacts = useSelector(getFilteredContacts);
+  const filteredContacts = useSelector(selectFilteredContacts);
 
   const dispatch = useDispatch()
 
@@ -27,10 +27,3 @@ const ContactList = () => {
 };
 
 export default ContactList;
-
-
-
-
-
-  // const contact = useSelector(state => state.contacts.contacts)
-  // const filter = useSelector(state => state.contacts.filter)
