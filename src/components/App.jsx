@@ -5,6 +5,7 @@ import { Login } from "pages/Login/Login"
 import { Register } from "pages/Register/Register"
 import { Route, Routes } from "react-router-dom"
 import { Header } from "./Header/Header"
+import { Layout } from "./Layout/Layout"
 
 
 function App () {
@@ -14,10 +15,12 @@ function App () {
     <div>
       <Header/>
       <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/register' element={<Register/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/contacts' element={<Contacts/>}/>
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<Home />}/>
+          <Route path='/register' element={<Register/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/contacts' element={<Contacts/>}/>
+        </Route>
       </Routes>
     </div>
     

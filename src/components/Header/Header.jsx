@@ -4,11 +4,11 @@ import Navigation from "components/Navigation/Navigation"
 export const Header = () => {
 
     return(
-        <div>
+        <header>
             <div>logo</div>
             <div>linki
                 <Navigation/>
             </div>
-        </div>
+        </header>
     )
 }
