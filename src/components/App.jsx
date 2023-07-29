@@ -1,25 +1,35 @@
-
-import Contacts from "pages/Contacts/Contacts"
-import { Home } from "pages/Home/Home"
-import { Login } from "pages/Login/Login"
-import { Register } from "pages/Register/Register"
+import React, { lazy } from "react";
 import { Route, Routes } from "react-router-dom"
-import { Header } from "./Header/Header"
 import { Layout } from "./Layout/Layout"
+import { RestrictedRoute } from "./RestrictedRoute/RestrictedRoute"
+import { PrivatedRoute } from "./PrivateRoute/PrivateRoute"
+// import { Header } from "./Header/Header";
 
+const HomePage = lazy(() => import('./../pages/Home/Home'))
+const LoginPage = lazy(() => import('./../pages/Login/Login'))
+const RegistredPage = lazy(() => import('./../pages/Register/Register'))
+const ContactPage = lazy(() => import('./../pages/Contacts/Contacts'))
 
 function App () {
 
 
   return(
     <div>
-      <Header/>
+      {/* <Header/> */}
       <Routes>
         <Route path="/" element={<Layout/>}>
-          <Route index element={<Home />}/>
-          <Route path='/register' element={<Register/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/contacts' element={<Contacts/>}/>
+          <Route index element={<HomePage />}/>
+          <Route path='/register' element={
+            <RestrictedRoute redirectTo='/contacts' component={<RegistredPage/>}/>
+          }
+          />
+          <Route path='/login' element={
+            <RestrictedRoute redirectTo='/contacts' component={<LoginPage/>}/>
+          }
+          />
+          <Route path='/contacts' element={
+            <PrivatedRoute redirectTo='/login' component={<ContactPage/>}/>
+          }/>
         </Route>
       </Routes>
     </div>

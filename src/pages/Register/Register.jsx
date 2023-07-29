@@ -1,7 +1,7 @@
 import { RegisterForm } from 'components/RegisterForm/RegisterForm'
 // import { Helmet } from 'react-redux'
 
-export const Register = () => {
+ const Register = () => {
 
     return(
         <div>
@@ -12,3 +12,4 @@ export const Register = () => {
         </div>
     )
 }
+export default Register
