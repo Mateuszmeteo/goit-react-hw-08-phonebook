@@ -1,0 +1,14 @@
+
+.userMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    &__btn{
+        height: 30px;
+        width: 80px;
+        border-radius: 20px;
+        border: none;
+    }
+}

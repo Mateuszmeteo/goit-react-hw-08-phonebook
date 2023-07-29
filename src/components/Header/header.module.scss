@@ -1,5 +1,29 @@
 
 
 .header {
-    background-color: aquamarine;
+    height: 60px;
+    // background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+
+    &__container {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid black;
+
+    }
+
+    &__nav{
+        // background-color: brown;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__log{
+        // background-color: cornsilk;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

@@ -6,9 +6,9 @@ export const useAuth = () => {
     const isRefreshing = false
     const user = null
 
-    return(
+    return{
         isLoggedIn,
         isRefreshing,
         user
-    )
+    }
 }
