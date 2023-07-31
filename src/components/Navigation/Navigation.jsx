@@ -2,14 +2,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './navigation.module.scss'
+import { useAuth } from 'hooks/userAuth';
 
 const Navigation = () => {
+  const { isLoggedIn } = useAuth()
   return (
     <nav className={styles.navigation}>
           <Link to="/">Home</Link>
-          <Link to="/contacts">Contacts</Link>
-          {/* <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link> */}
+          {isLoggedIn && <Link to="/contacts">Contacts</Link>}
     </nav>
   );
 };

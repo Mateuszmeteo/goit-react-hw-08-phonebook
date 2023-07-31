@@ -31,17 +31,23 @@ const authPersistConfig = {
 
 
 //////////
+// Servers
 
+// https://connections-api.herokuapp.com - API base URL
+
+//////////
+const API_URL = 'https://64b6729fdf0839c97e1594df.mockapi.io'
+// const API_URL = 'https://connections-api.herokuapp.com'
 
 export const fetchContacts = createAsyncThunk('contacts/fetchContacts', async () => {
-    const response = await fetch('https://64b6729fdf0839c97e1594df.mockapi.io/contacts');
+    const response = await fetch(`${API_URL}/contacts`);
     const data = await response.json();
     console.log(data)
     return data;
   });
   
   export const saveContact = createAsyncThunk('contacts/saveContact', async (contact) => {
-    const response = await fetch('https://64b6729fdf0839c97e1594df.mockapi.io/contacts', {
+    const response = await fetch(`${API_URL}/contacts`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +59,7 @@ export const fetchContacts = createAsyncThunk('contacts/fetchContacts', async ()
   });
   
   export const deleteContact = createAsyncThunk('contacts/deleteContact', async (contactId) => {
-    await fetch(`https://64b6729fdf0839c97e1594df.mockapi.io/contacts/${contactId}`, {
+    await fetch(`${API_URL}/contacts/${contactId}`, {
       method: 'DELETE',
     });
     return contactId;
@@ -112,7 +118,7 @@ export const selectFilteredContacts = (state) => {
 
 
 
- const store =  configureStore({
+ const store = configureStore({
     reducer: {
       auth: persistReducer(authPersistConfig, authReducer),
         contacts: contactsSlise.reducer

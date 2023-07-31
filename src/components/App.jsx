@@ -4,6 +4,11 @@ import { Route, Routes } from "react-router-dom"
 import { Layout } from "./Layout/Layout"
 import { RestrictedRoute } from "./RestrictedRoute/RestrictedRoute"
 import { PrivatedRoute } from "./PrivateRoute/PrivateRoute"
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { refreshUser } from "./redux/auth/operations";
+import { useAuth } from "hooks/userAuth";
+
 
 const HomePage = lazy(() => import('./../pages/Home/Home'))
 const LoginPage = lazy(() => import('./../pages/Login/Login'))
@@ -12,8 +17,15 @@ const ContactPage = lazy(() => import('./../pages/Contacts/Contacts'))
 
 function App () {
 
+  const dispatch = useDispatch()
+  const {isRefreshing } = useAuth() 
 
-  return(
+  useEffect(() => {
+    dispatch(refreshUser())
+  }, [dispatch])
+
+
+  return isRefreshing ? (<div>Refreshing User...</div>) : (
     <div>
       <Routes>
         <Route path="/" element={<Layout/>}>
