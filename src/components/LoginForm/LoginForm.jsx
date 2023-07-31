@@ -1,20 +1,25 @@
 
-
+import { useDispatch } from "react-redux"
+import { logIn } from "components/redux/auth/operations"
 
 export const LoginForm = () => {
+    const dispatch = useDispatch()
 
 
-    // handleSubmit = e => {
-    //     e.preventDefault()
-    //     const form = e.currentTarget
+    const handleSubmit = e => {
+        e.preventDefault()
+        const form = e.currentTarget
 
-    //     console.log(form.value)
-    //     form.reset()
-    // }
+        dispatch(logIn({
+            email: form.elements.email.value,
+            password: form.element.password.value
+        }))
+        form.reset()
+    }
 
     return(
         <form 
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         >
             <label>
                 Email 

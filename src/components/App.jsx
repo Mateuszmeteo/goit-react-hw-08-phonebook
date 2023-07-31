@@ -4,7 +4,6 @@ import { Route, Routes } from "react-router-dom"
 import { Layout } from "./Layout/Layout"
 import { RestrictedRoute } from "./RestrictedRoute/RestrictedRoute"
 import { PrivatedRoute } from "./PrivateRoute/PrivateRoute"
-// import { Header } from "./Header/Header";
 
 const HomePage = lazy(() => import('./../pages/Home/Home'))
 const LoginPage = lazy(() => import('./../pages/Login/Login'))
@@ -16,7 +15,6 @@ function App () {
 
   return(
     <div>
-      {/* <Header/> */}
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route index element={<HomePage />}/>
