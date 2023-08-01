@@ -1,7 +1,7 @@
 import React from "react";
 import css from './filter.module.css'
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter } from "components/redux/Store";
+import { setFilter } from "components/redux/phonebook/setFilter";
 
 const Filter = () => {
   const filter = useSelector((state) => state.contacts.filter)

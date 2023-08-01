@@ -1,5 +1,6 @@
 import { useSelector, useDispatch} from 'react-redux'
-import { saveContact, deleteContact, setFilter, fetchContacts } from './../../components/redux/Store';
+import { addContact, deleteContact, fetchContacts } from './../../components/redux/phonebook/operations';
+import { setFilter } from './../../components/redux/phonebook/setFilter'
 
 
 import { nanoid } from "nanoid";
@@ -37,7 +38,7 @@ const Contacts = () => {
       number: number,
     };
 
-    dispatch(saveContact(newContact))
+    dispatch(addContact(newContact))
   };
 
   const handleDeleteContact = (contactId) => {
@@ -73,3 +74,13 @@ const Contacts = () => {
 
 
 export default Contacts
+
+/////////////////////////////////////===============================================////////////////////////////////
+// const Contacts = () => {
+//   return(
+//     <div><h1>Contact Page</h1></div>
+//   )
+
+
+// }
+// export default Contacts

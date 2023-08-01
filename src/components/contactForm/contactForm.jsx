@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { saveContact } from './../redux/Store'
+import { addContact } from 'components/redux/phonebook/operations';
 import { nanoid } from 'nanoid';
 
 import css from './contactForm.module.css'
@@ -25,7 +25,7 @@ const ContactForm = () => {
       number: number
     };
 
-    dispatch(saveContact(newContact));
+    dispatch(addContact(newContact));
 
     setName('');
     setNumber('');
