@@ -22,6 +22,8 @@ const middleware = [
     })
 ]
 
+
+
 const authPersistConfig = {
     key: 'auth',
     storage,
