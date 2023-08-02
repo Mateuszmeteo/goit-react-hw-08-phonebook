@@ -2,7 +2,7 @@
 import React from "react";
 import css from "./contactList.module.css"
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter } from "components/redux/phonebook/setFilter";
+import { setFilter } from "components/redux/phonebook/phoneSlices";
 import { deleteContact } from "components/redux/phonebook/operations";
 
 

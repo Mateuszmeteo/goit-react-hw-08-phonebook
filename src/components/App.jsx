@@ -15,7 +15,7 @@ const LoginPage = lazy(() => import('./../pages/Login/Login'))
 const RegistredPage = lazy(() => import('./../pages/Register/Register'))
 const ContactPage = lazy(() => import('./../pages/Contacts/Contacts'))
 
-function App () {
+export const App = () => {
 
   const dispatch = useDispatch()
   const {isRefreshing } = useAuth() 
@@ -47,7 +47,7 @@ function App () {
     
   )
 }
-export default App
+
 
 ///////////////
 
