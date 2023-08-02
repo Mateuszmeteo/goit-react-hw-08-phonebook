@@ -8,12 +8,13 @@ import ContactForm  from "./../../components/contactForm/contactForm";
 import ContactList from "./../../components/contactList/contactList";
 import Filter from "./../../components/filter/filter";
 import { useEffect } from 'react';
+import { selectAllContacts, selectFilteredContacts } from 'components/redux/phonebook/selectors';
 
 const Contacts = () => {
 
 
-  const contacts = useSelector(state => state.contacts.contacts);
-  const filter = useSelector(state => state.contacts.filter);
+  const contacts = useSelector(selectAllContacts);
+  const filter = useSelector(selectFilteredContacts);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -51,7 +52,7 @@ const Contacts = () => {
   };
 
 
-  const filteredContacts = useSelector((state) => state.contacts.filteredContacts);
+  // const filteredContacts = useSelector((state) => state.contacts.filteredContacts);
 
 
 
@@ -65,7 +66,7 @@ const Contacts = () => {
       <div>
         <h2>Contacts</h2>
         <Filter value={filter} onChange={handleChangeFilter} />
-        <ContactList contacts={filteredContacts} onDeleteContact={handleDeleteContact} />
+        <ContactList contacts={contacts} onDeleteContact={handleDeleteContact} />
       </div>
     </div>
   );
