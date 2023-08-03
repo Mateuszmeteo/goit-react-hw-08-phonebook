@@ -11,6 +11,8 @@ import { useEffect } from 'react';
 // import { selectUser } from 'components/redux/auth/selectors';
 import { fetchContacts } from './../../components/redux/phonebook/operations';
 
+import styles from './contacts.module.scss'
+
 function Contacts () {
 
 
@@ -64,13 +66,13 @@ function Contacts () {
   return (
     <div>
       <div>
-        <h1>Phonebook</h1>
+        <h1 className={styles.title}>Phonebook</h1>
         <ContactForm 
         // onAddContact={handleAddContact} 
         />
       </div>
       <div>
-        <h2>Contacts</h2>
+        <h2 className={styles.subtitle}>Contacts</h2>
         <Filter 
               // value={filter} 
               // onChange={handleChangeFilter} 

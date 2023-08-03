@@ -1,6 +1,6 @@
 
 import React from "react";
-import css from "./contactList.module.css"
+import styles from "./contactList.module.scss"
 import { useDispatch, useSelector } from "react-redux";
 // import { setFilter } from "components/redux/phonebook/phoneSlices";
 import { deleteContact } from "components/redux/phonebook/operations";
@@ -26,11 +26,12 @@ const ContactList = () => {
   }
 
   return(
-  <ul>
+  <ul className={styles.contactList}>
     {mapContacts.map((contact) => (
-      <li key={contact.id}>
-        {contact.name}: {contact.number}
-        <button className={css.btnDelete} onClick={() => handleDelete(contact.id)}>Delete</button>
+      <li className={styles.contactList__element}
+        key={contact.id}>
+        <h4>{contact.name}</h4><p>{contact.number}</p>
+        <button className={styles.contactList__btnDelete} onClick={() => handleDelete(contact.id)}>Delete</button>
       </li>
     ))}
   </ul>

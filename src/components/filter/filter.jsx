@@ -1,5 +1,5 @@
 import React from "react";
-import css from './filter.module.css'
+import styles from './filter.module.scss'
 import { useDispatch } from "react-redux";
 import { setFilter } from "components/redux/phonebook/phoneSlices";
 
@@ -12,12 +12,15 @@ const Filter = () => {
   }
 
   return(
-  <div className={css.filterDiv}>
-    <label>Find contacts by name</label>
-    <input type='text' 
+  <div className={styles.filterContacts}>
+    <label className={styles.filterContacts__label}>Find contacts by name
+    <input  className={styles.filterContacts__input}
+          type='text' 
+          placeholder="Find contacts"
           // value={filter} 
           // onChange={handleChange} 
           onChange={e => handleChange(e)}/>
+      </label>
   </div>
   )
 };
