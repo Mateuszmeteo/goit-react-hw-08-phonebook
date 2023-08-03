@@ -16,7 +16,7 @@
 
     &__element {
         background-color: rgba(250, 235, 215, 0.8);
-        width: 200px;
+        min-width: 200px;
         margin: 20px 0;
 
         display: flex;
@@ -27,16 +27,56 @@
         border-radius: 20px;
 
         color: rgb(85, 99, 99);
+    }
+    &__h4 {
+        font-size: 16px;
+        background-color: rgb(250, 235, 215);
+        padding: 10px 20px;
+        border-radius: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+
+    }
+    &__p {
+        padding-bottom: 25px;
+        font-size: 14px;
+        position: relative;
+
+        &::after{
+            content: '***';
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            bottom: -5px;
+        }
 
     }
 
     &__btnDelete{
+        margin-top: 10px;
         margin-bottom: 20px;
         color: rgb(85, 99, 99);
 
         border-radius: 20px;
         border: none;
         padding: 5px 20px;
+
+         // margin-top: 40px;
+        //  width: 240px;
+        //  height: 25px;
+        //  border-radius: 20px;
+        //  border: none;
+ 
+         font-size: 14px;
+         font-weight: 400;
+         font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+         letter-spacing: 1px;
+         color: white;
+ 
+         cursor: pointer;
+ 
+         background-color: darkslategray;
     }
 }
 

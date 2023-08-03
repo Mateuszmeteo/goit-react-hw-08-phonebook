@@ -2,9 +2,29 @@
 .userMenu {
     display: flex;
     // flex-direction: column;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     align-items: center;
     gap: 10px;
+
+    &__p {
+        font-weight: 400;
+        font-size: 12px;
+        letter-spacing: 2px;
+        color: #ffffff;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+        :nth-child(2) {
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+    }
+
+    &__span {
+        display: flex;
+        justify-content: flex-end;
+    }
 
 
 
