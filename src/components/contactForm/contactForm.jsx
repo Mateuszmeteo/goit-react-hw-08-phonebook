@@ -6,6 +6,7 @@ import styles from './contactForm.module.scss'
 const ContactForm = () => {
 
   const dispatch = useDispatch()
+  
 
   // const [name, setName] = useState('')
   // const [number, setNumber] = useState('')
