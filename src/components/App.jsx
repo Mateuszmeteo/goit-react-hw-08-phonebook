@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { refreshUser } from "./redux/auth/operations";
 import { useAuth } from "hooks/userAuth";
 
+import styles from './app.module.scss'
 
 const HomePage = lazy(() => import('./../pages/Home/Home'))
 const LoginPage = lazy(() => import('./../pages/Login/Login'))
@@ -26,7 +27,7 @@ export const App = () => {
 
 
   return isRefreshing ? (<div>Refreshing User...</div>) : (
-    <div>
+    <div className={styles.app}>
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route index element={<HomePage />}/>

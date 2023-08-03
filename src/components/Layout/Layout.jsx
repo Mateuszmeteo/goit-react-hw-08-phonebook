@@ -13,7 +13,7 @@ export const Layout = ({children}) => {
             <Suspense fallback={null}>
                 <Outlet/>
             </Suspense>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

@@ -8,8 +8,8 @@ const Navigation = () => {
   const { isLoggedIn } = useAuth()
   return (
     <nav className={styles.navigation}>
-          <Link to="/">Home</Link>
-          {isLoggedIn && <Link to="/contacts">Contacts</Link>}
+          <Link className={styles.navigation__link} to="/">Home</Link>
+          {isLoggedIn && <Link className={styles.navigation__link} to="/contacts">Contacts</Link>}
     </nav>
   );
 };

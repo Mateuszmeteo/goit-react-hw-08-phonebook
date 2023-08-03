@@ -2,4 +2,13 @@
 .authNav {
     display: flex;
     gap: 30px;
+
+    &__link {
+        text-decoration: none;
+
+        font-weight: 700;
+        color: rgb(22, 22, 92);
+        
+    }
+
 }
