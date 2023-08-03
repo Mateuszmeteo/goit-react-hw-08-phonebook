@@ -2,6 +2,8 @@
 import { useDispatch } from "react-redux"
 import { logIn } from "components/redux/auth/operations"
 
+import styles from './loginForm.module.scss'
+
 export const LoginForm = () => {
     const dispatch = useDispatch()
 
@@ -18,18 +20,22 @@ export const LoginForm = () => {
     }
 
     return(
-        <form 
+        <form className={styles.loginForm}
         onSubmit={handleSubmit}
         >
-            <label>
+            <label className={styles.loginForm__label}>
                 Email 
-                <input type="email" name="email"></input>
+                <input className={styles.loginForm__input} 
+                type="email" name="email"
+                placeholder="Your email"></input>
             </label>
-            <label>
+            <label className={styles.loginForm__label}>
                 Password 
-                <input type="password" name="password"></input>
+                <input className={styles.loginForm__input} 
+                type="password" name="password"
+                placeholder="Your password"></input>
             </label>
-                <button type="submit">Log in</button>
+                <button className={styles.loginForm__btn} type="submit">Log in</button>
         </form>
     )
 }
