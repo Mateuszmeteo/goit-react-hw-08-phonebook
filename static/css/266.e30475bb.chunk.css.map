@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/266.e30475bb.chunk.css","mappings":"AAEA,kBAGI","sources":["pages/Home/home.module.scss"],"sourcesContent":["\n\n.home {\n    // background-color: beige;\n\n    height: 80vh;\n}"],"names":[],"sourceRoot":""}
