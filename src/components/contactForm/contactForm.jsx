@@ -1,9 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { addContact } from 'components/redux/phonebook/operations';
-import { nanoid } from 'nanoid';
 
 import styles from './contactForm.module.scss'
-import { useState } from 'react';
 
 const ContactForm = () => {
 
