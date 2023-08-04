@@ -1,13 +1,15 @@
 import styles from './home.module.scss'
-
+// import x from './../../images/phone-ring.svg'
  const Home = () => {
     
 
     return (
         <div className={styles.home}>
-            <h1>Home</h1>
-            <p>Welcome</p>
-   
+            <div className={styles.home__div}>
+                <h1 className={styles.home__title}>Welcome!</h1>
+                <p className={styles.home__subtitle}>PhoneBook Web Application</p>
+            </div>
+            
         </div>
     )
 }

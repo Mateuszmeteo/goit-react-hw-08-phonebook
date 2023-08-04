@@ -3,5 +3,25 @@
 .home {
     // background-color: beige;
 
-    height: 80vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    // align-items: center;
+
+    &__div{
+        // display: flex;
+        margin-top: 40px;
+        color: #fff;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        letter-spacing: 1px;
+    }
+    &__title {
+        font-size: 36px;
+    }
+    &__subtitle {
+        padding-top: 20px;
+        font-size: 18px;
+    }
+
 }
