@@ -1,5 +1,6 @@
 import styles from './home.module.scss'
-// import x from './../../images/phone-ring.svg'
+
+
  const Home = () => {
     
 

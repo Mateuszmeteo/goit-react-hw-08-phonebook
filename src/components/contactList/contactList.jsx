@@ -2,10 +2,8 @@
 import React from "react";
 import styles from "./contactList.module.scss"
 import { useDispatch, useSelector } from "react-redux";
-// import { setFilter } from "components/redux/phonebook/phoneSlices";
 import { deleteContact } from "components/redux/phonebook/operations";
 import { selectAllContacts, selectFilteredContacts } from "components/redux/phonebook/selectors";
-import propTypes from 'prop-types'
 
 
 const ContactList = () => {
@@ -41,8 +39,3 @@ const ContactList = () => {
 };
 
 export default ContactList;
-
-ContactList.propTypes = {
-  deleteContact: propTypes.func,
-  names: propTypes.array,
-};

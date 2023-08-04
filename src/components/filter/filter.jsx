@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { setFilter } from "components/redux/phonebook/phoneSlices";
 
 const Filter = () => {
-  // const filter = useSelector((state) => state.contacts.filter)
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
@@ -17,8 +16,6 @@ const Filter = () => {
     <input  className={styles.filterContacts__input}
           type='text' 
           placeholder="Find contacts"
-          // value={filter} 
-          // onChange={handleChange} 
           onChange={e => handleChange(e)}/>
       </label>
   </div>
