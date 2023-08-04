@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { addContact } from 'components/redux/phonebook/operations';
+import propTypes from 'prop-types'
 
 import styles from './contactForm.module.scss'
 
@@ -90,6 +91,6 @@ const ContactForm = () => {
 };
 export default ContactForm
 
-// ContactForm.propTypes = {
-//   addNewName: propTypes.func,
-// };
+ContactForm.propTypes = {
+  addNewName: propTypes.func,
+};
